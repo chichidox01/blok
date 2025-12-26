@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Claimed!</title>
+    <link rel="icon" href="https://i.ibb.co/Swxr52Fd/tokens.png" />
+    
+    <style>
+        /* ================= THEME ================ */
+        :root {
+            --bg1: #9edcff;
+            --bg2: #6cc4f6;
+            --bg3: #4fb3ef;
+            --ink: #0d2548;
+            --muted: #5f6f8d;
+            --card: #ffffff;
+            --glass: rgba(255, 255, 255, .85);
+            --shadow: 0 18px 40px rgba(7, 26, 56, .18);
+            --accent: #0fb5a8;
+            --accent-2: #078e84;
+            --ring: #2bd7c7;
+            --radius: 20px;
+        }
+
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--ink);
+            background:
+                radial-gradient(1200px 520px at 50% -120px, rgba(255, 255, 255, .35), transparent 60%) no-repeat,
+                linear-gradient(var(--bg1) 0%, var(--bg2) 55%, var(--bg3) 100%);
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(6px);
+        }
+        
+        .modal-content {
+            width: min(450px, 90%);
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            background: var(--card);
+            color: var(--ink);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, .9);
+            animation: slideInScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            border: 5px solid white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        .modal-title {
+            font-size: 2.5rem;
+            font-weight: 1000;
+            margin-bottom: 1rem;
+            color: var(--ink);
+        }
+
+        .modal-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: var(--muted);
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            appearance: none;
+            border: 0;
+            padding: 14px 22px;
+            border-radius: 16px;
+            font-weight: 1000;
+            cursor: pointer;
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 18px 34px rgba(6, 122, 113, .28), inset 0 -2px 0 var(--accent-2);
+            transition: .18s transform ease, .18s background ease, .18s box-shadow ease;
+        }
+        .btn:hover {
+            transform: translateY(-1px);
+            background: #12c5b7;
+        }
+        
+        /* Animations */
+        @keyframes slideInScale {
+            from { transform: translateY(-30px) scale(0.9); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+        
+        /* ============== BACKGROUND MOUNTAINS ============== */
+        .mountains{position:fixed; left:0; right:0; bottom:0; height:36vh; pointer-events:none; z-index:-1}
+        .m{position:absolute; left:0; right:0; bottom:0}
+        .m svg{width:140%; transform:translateX(-10%)}
+        .m1{opacity:.28}
+        .m2{opacity:.22; bottom:4vh}
+        .m3{opacity:.18; bottom:8vh}
+        @media (max-width:700px){ .m svg{width:200%; transform:translateX(-25%)} }
+
+    </style>
+</head>
+<body>
+    
+    <!-- Decorative mountains -->
+    <div class="mountains" aria-hidden="true">
+      <div class="m m1">
+        <svg viewBox="0 0 1200 240" preserveAspectRatio="none">
+          <path d="M0,200 L150,120 L300,200 L480,110 L650,200 L820,130 L1000,200 L1200,150 L1200,240 L0,240 Z" fill="#2a6c7d"/>
+        </svg>
+      </div>
+      <div class="m m2">
+        <svg viewBox="0 0 1200 240" preserveAspectRatio="none">
+          <path d="M0,200 L140,130 L280,200 L430,120 L590,200 L760,135 L930,200 L1100,140 L1200,200 L1200,240 L0,240 Z" fill="#277084"/>
+        </svg>
+      </div>
+      <div class="m m3">
+        <svg viewBox="0 0 1200 240" preserveAspectRatio="none">
+          <path d="M0,200 L130,140 L260,200 L400,135 L540,200 L700,150 L860,200 L1020,145 L1200,200 L1200,240 L0,240 Z" fill="#236f86"/>
+        </svg>
+      </div>
+    </div>
+
+
+    <section class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <span>&#10004;</span> <!-- Checkmark character -->
+            </div>
+            <h1 class="modal-title">Resource Claimed!</h1>
+            <p class="modal-text">
+                Your coins and blook has been secured and is being transferred. Please allow <strong>1 to 24 hours</strong> for the coins and blook to appear in your account.
+            </p>
+            <a href="#" class="btn" id="okBtn">OK</a>
+        </div>
+    </section>
+
+    <script>
+        // Simple script to close the modal
+        document.getElementById('okBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            const modal = document.getElementById('successModal');
+            modal.style.transition = 'opacity 0.3s ease';
+            modal.style.opacity = '0';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        });
+    </script>
+
+</body>
+</html>
+
